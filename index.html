@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+    <head>        
+        <meta charset="UTF-8" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Funciones Jquery</title>
+
+        <!--link bootstrap-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.css"/>
+
+        <!--CSS propio-->
+        <link rel="stylesheet" href="styles.css"/>
+
+        <!-- JS Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+                // funcion "click" y  "text"
+                $('#accion01').click(function(){
+                    var fecha = new Date();
+                    $('#fecha').text(fecha);
+                    alert("La resolución de tu pantalla es: " + screen.width + " x " + screen.height) 
+                });
+
+                // funcion "click" y  "hide"
+                $('#accion02').click(function(){
+                    $('#parrafo_hide').hide(3000);
+                });
+
+                // funcion "click" y  "show"
+                $('#accion03').on("click",function(){
+                    $('#mostrar_imagen').show(3000);
+                });
+
+                //Manejo funcion "toggle"
+                $('#accion04').on("click",function(){
+                    $('#toggle_imagen').toggle("slow");
+                });
+
+                //Manejo funcion "slideDown"
+                $('#accion05').on("click",function(){
+                    $('#parrafo_slidedown').slideDown("slow",function(){
+                        alert("Se completó la acción...");
+                    })
+                });
+
+                //Manejo funcion "slideUp"
+                $('#accion06').on('click',function(){
+                    $('.slideup-objects').slideUp(3000);
+                });
+
+                //Manejo funcion "slideToggle"
+                $('#accion07').on('click',function(){
+                    $('#posiciones').slideToggle("slow");
+                });
+
+               //Manejo funcio ".addClass()" 
+                $('#accion10').on("click",function(){
+                    $('#modificar_clases').addClass("fw-bold text-danger fst-italic");
+                });
+
+                $('#accion10_1').on("click",function(){
+                    $('#modificar_clases').removeClass("fw-bold fst-italic");
+                });
+
+                //Manejo funcion ".before()"
+                $('#accion11').on("click",function(){
+                    var p = '<p class="text-primary">Este es un párrafo que se agregó antes del otro...</p>';
+                    $('#par_before').before(p);
+                });
+
+                //Manejo funcion ".after()" 
+                $('#accion12').on("click",function(){
+                    var p = '<p class="text-info">Este es un párrafo que se agregó antes del otro...</p>';
+                    $('#par_after').after(p);
+                });
+
+                //Manejo funcion ".append()" 
+                $('#accion13').on("click",function(){
+                    var p = '<p class="text-info">Este es un párrafo que se agregó antes del otro...</p>';
+                    $('#par_append').append(p);
+                });
+
+                //Manejo funcion ".html()"
+                $('#accion14').on("click",function(){
+                    var p = '<p class="text-info">Este es un párrafo que reemplazó al viejo...</p>';
+                    $('#par_html').html(p);
+                });
+
+                //Manejo funcion ".attr()"
+                $('#accion15').on("click",function(){
+                    var p = $('#par_attr').attr("class");
+                    alert(p);
+                });
+
+                $('#accion15_1').on("click",function(){
+                    $('#par_attr').attr({style:"font-family:verdana",class:"text-danger"});
+                });
+
+                
+
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container text-center p-5 mb-4 bg-info">
+            <h1>Funciones Jquery</h1>
+        </div>
+        
+        <div class="container">
+            <h2>Uso Función ".click()"</h2>
+            <div class="row">                
+                <div class="col-6">
+                    <button id="accion01" class="btn btn-primary">Presioname para ver la fecha de hoy...</button>
+                </div>
+                <div class="col-6">                    
+                    <p id="fecha" class="fs-5"></p>
+                </div>
+            </div>
+            <hr>
+            <h2>Uso Función ".hide()"</h2>
+            <div class="row">                
+                <div class="col-6">
+                    <h3 id="accion02" class="fw-bold text-primary">Presioname para ocultar el parrafo!!!</h3>
+                </div>
+                <div class="col-6">
+                    <h5 class="fw-bold">El párrafo...</h5>
+                    <p id="parrafo_hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium tempora blanditiis impedit tempore voluptates consequatur itaque, eveniet quae hic neque quam libero possimus autem dolor exercitationem vero nesciunt numquam a.</p>
+                </div>
+            </div>
+            <hr>
+            <h2>Uso Función ".show()"</h2>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion03" class="btn btn-danger">Presioname para ver cosas maravillosas!!!</button>
+                </div>
+                <div class="col-6">
+                    <img class="ocultar_elemento" id="mostrar_imagen" src="http://picsum.photos/300/300" alt="Imagen aleatoria">
+                </div>
+            </div>
+            <hr>
+            <h2>Uso Función ".toggle()"</h2>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion04" class="btn btn-success">Presioname para togglear el mundo!!!</button>
+                </div>
+                <div class="col-6">
+                    <img id="toggle_imagen" src="http://picsum.photos/250/250" alt="Imagen aleatoria">
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".slideDown()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion05" class="btn btn-info">Presioname para slideDown un parrafo!!!</button>
+                </div>
+                <div class="col-6">
+                    <p class="ocultar_elemento" id="parrafo_slidedown">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem ipsa quam dolor blanditiis doloremque a consectetur similique doloribus deleniti cupiditate consequatur officia recusandae provident culpa, molestias facilis deserunt, quasi beatae ipsum libero accusamus eveniet aliquid laborum nostrum. Officiis, natus quam. Reprehenderit dignissimos minus ab doloremque, cumque veniam aperiam modi nostrum?</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".slideUp()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion06" class="btn btn-warning">Presioname para slideUp una imagen!!!</button>
+                </div>
+                <div class="col-6">
+                    <!-- <img class="slideup-objects" src="http://picsum.photos/250/250" alt="lala"> -->
+                    <p class="slideup-objects">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit rem, facere architecto natus illo quasi, accusamus mollitia culpa sit, nisi optio neque incidunt reprehenderit repudiandae qui placeat ea. Aperiam eos dolores quia fuga optio dolore nihil ullam quasi placeat praesentium quas cumque aut quidem asperiores eligendi expedita, non provident maxime deserunt ea! Nam atque beatae maiores obcaecati soluta eligendi sequi, tempore unde accusamus! Cumque, reprehenderit. Cupiditate assumenda possimus pariatur voluptatibus facilis perferendis optio harum. Molestias ipsam ipsa eos illo. Laborum sint fugit voluptatibus error! Alias ullam sequi molestiae assumenda perferendis, voluptate dolore illum nobis beatae distinctio necessitatibus accusantium voluptatem modi.</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".slideToggle()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion07" class="btn btn-secondary">Clasificatorias Qatar-2022</button>
+                    <ul id='posiciones'>
+                        <li>Brasil</li>
+                        <li>Argentina</li>
+                        <li>Ecuador</li>
+                        <li>Uruguay</li>
+                        <li>Colombia</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".addclass()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion10" class="btn btn-danger">Presioname para agregar una clase</button>
+                    <button id="accion10_1" class="btn btn-success">Presioname para quitar una clase</button>
+                </div>
+                <div class="col-6">
+                    <p id="modificar_clases">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, neque.</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".before()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion11" class="btn btn-danger bg-gradient">Presioname para agregar una texto antes de...</button>
+                </div>
+                <div class="col-6">
+                    <p id="par_before">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis minus aspernatur commodi ducimus officia ullam, ipsam voluptates repellat! Veritatis, blanditiis?</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".after()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion12" class="btn btn-dark bg-gradient">Presioname para agregar una texto después de...</button>
+                </div>
+                <div class="col-6">
+                    <p id="par_after">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis minus aspernatur commodi ducimus officia ullam, ipsam voluptates repellat! Veritatis, blanditiis?</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".append()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion13" class="btn btn-success bg-gradient">Presioname para anexar un nuevo párrafo...</button>
+                </div>
+                <div class="col-6">
+                    <p id="par_append">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis minus aspernatur commodi ducimus officia ullam, ipsam voluptates repellat! Veritatis, blanditiis?</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".html()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion14" class="btn btn-info bg-gradient">Presioname para htmliar un nueva párrafo...</button>
+                </div>
+                <div class="col-6">
+                    <p id="par_html">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis minus aspernatur commodi ducimus officia ullam, ipsam voluptates repellat! Veritatis, blanditiis?</p>
+                </div>
+            </div>
+            <hr>
+            <h1>Uso Función ".attr()"</h1>
+            <div class="row">
+                <div class="col-6">
+                    <button id="accion15" class="btn btn-warning bg-gradient">Conocer el valor de un atributo...</button>
+                    <button id="accion15_1" class="btn btn-secondary bg-gradient">Agregar un atributo...</button>
+                </div>
+                <div class="col-6">
+                    <p id="par_attr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis minus aspernatur commodi ducimus officia ullam, ipsam voluptates repellat! Veritatis, blanditiis?</p>
+                </div>
+            </div>
+            <hr>
+        
+        </div>
+
+        <div class="footer mt-4">
+            <div class="row bg-dark text-white text-center p-5" >
+                <h2>Fin del documento</h2>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
